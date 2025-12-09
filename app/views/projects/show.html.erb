@@ -1,0 +1,12 @@
+<h1><%= @project.name %></h1>
+
+<ul>
+  <% @project.todos.each do |todo| %>
+    <li>
+        <%= check_box_tag "todo_#{todo.id}", 1, todo.completed, disabled: true %>
+        <%= link_to todo.name, todo_path(todo)%>
+    </li>
+  <% end %>
+</ul>
+
+<%= button_to "Delete Project", project_path(@project), method: :delete %>
